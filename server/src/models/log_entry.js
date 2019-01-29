@@ -8,22 +8,27 @@ const LogEntrySchema = new Schema({
     type: Number,
     required: true
   },
-  type: {
+  title: {
+    type: String,
+    required: true
+  }, 
+  author: {
     type: String,
     required: true
   },
   createdAt: {
     type: Date,
     default: Date.new
-  },
-  ingredients: {
-    type: String,
-    required: true
-  },
-  process: {
-    type: String,
-    required: true
   }
+}, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true },
+})
+
+LogEntrySchema.virtual('images', {
+  ref: 'Image',
+  localField: '_id',
+  foreignField: 'logEntryId'
 })
 
 module.exports = mongoose.model('LogEntry', LogEntrySchema)

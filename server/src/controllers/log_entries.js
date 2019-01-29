@@ -3,7 +3,9 @@
 const LogEntry = require('../models/log_entry')
 
 exports.index = function(req, res) {
-  LogEntry.find({}, function(err, logEntry) {
+  LogEntry.find({})
+          .populate('images')
+          .exec(function(err, logEntry) {
     if (err) res.send(err)
     res.json(logEntry)
   })
@@ -18,7 +20,9 @@ exports.create = function(req, res) {
 }
 
 exports.show = function(req, res) {
-  LogEntry.findById(req.params.id, function(err, logEntry) {
+  LogEntry.findById(req.params.id)
+          .populate('images')
+          .exec(function(err, logEntry) {
     if (err) res.send(err)
     res.json(logEntry)
   })
