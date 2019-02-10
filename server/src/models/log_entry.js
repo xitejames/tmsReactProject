@@ -8,17 +8,25 @@ const LogEntrySchema = new Schema({
     type: Number,
     required: true
   },
-  title: {
+  type: {
     type: String,
     required: true
-  }, 
-  author: {
+  },
+  title: {
     type: String,
     required: true
   },
   createdAt: {
     type: Date,
-    default: Date.new
+    default: Date.now
+  },
+  keywords: {
+    type: String,
+    required: true  
+  },
+  author: {
+    type: String,
+    required: true
   }
 }, {
   toJSON: { virtuals: true },

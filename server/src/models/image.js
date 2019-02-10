@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const ImageSchema = new Schema({
   logEntryId: {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.ObjectId,
     required: true
   },
   path: {
